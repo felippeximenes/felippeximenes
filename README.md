@@ -2,7 +2,14 @@
 
 ###
 
-<p align="left">I am currently studying and gaining expertise in several key areas of technology and data:<br><br>- Web Development: Learning how to build and maintain dynamic websites and applications using modern web technologies.<br>- Data Analysis and Manipulation: Acquiring skills in manipulating and analyzing data to uncover insights and support decision-making.<br>- Data Visualization: Developing the ability to create meaningful and interactive visual representations of data to effectively communicate findings.<br><br>My journey in these fields is driven by a passion for technology and a desire to leverage data to solve real-world problems.</p>
+<p align="left">I’m a passionate developer with a strong focus on creating scalable, user-friendly, and visually engaging solutions. With hands-on experience in both freelancing and academic projects, I specialize in delivering responsive websites, seamless user interfaces, and efficient backend systems.
+
+🎯 What I do:
+
+🌐 Develop responsive websites using HTML, CSS, JavaScript, and frameworks like jQuery. <br>
+⚙️ Build dynamic applications and APIs with Node.js, Python (Tkinter), and MongoDB. <br>
+🎨 Craft intuitive and aesthetic user interfaces with a focus on UI/UX design. <br>
+📊 Optimize SEO for improved site visibility and user engagement.</p>
 
 ###
 
