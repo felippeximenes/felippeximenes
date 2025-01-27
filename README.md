@@ -2,7 +2,9 @@
 
 ###
 
-<p align="left">I’m a passionate developer with a strong focus on creating scalable, user-friendly, and visually engaging solutions. With hands-on experience in both freelancing and academic projects, I specialize in delivering responsive websites, seamless user interfaces, and efficient backend systems.
+<p align="left">
+  👋 Hi, I'm Felippe Ximenes <br>
+  I’m a passionate developer with a strong focus on creating scalable, user-friendly, and visually engaging solutions. With hands-on experience in both freelancing and academic projects, I specialize in delivering responsive websites, seamless user interfaces, and efficient backend systems.
 
 🎯 What I do:
 
