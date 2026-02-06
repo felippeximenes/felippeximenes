@@ -4,14 +4,18 @@
 
 <p align="left">
   👋 Hi, I'm Felippe Ximenes <br>
-  I’m a passionate developer with a strong focus on creating scalable, user-friendly, and visually engaging solutions. With hands-on experience in both freelancing and academic projects, I specialize in delivering responsive websites, seamless user interfaces, and efficient backend systems.
+  
+Junior Full Stack Developer with experience in frontend development, backend APIs, and AI-driven systems.<br>
+Strong background in Python, FastAPI, LLMs, RAG, and data pipelines, with hands-on experience integrating frontend interfaces with scalable backend services.<br>
+Comfortable working end-to-end, from UI to APIs, databases, and AI integrations, following production-oriented engineering practices.<br>
 
 🎯 What I do:
 
-🌐 Develop responsive websites using HTML, CSS, JavaScript, and frameworks like jQuery. <br>
-⚙️ Build dynamic applications and APIs with Node.js, Python (Tkinter), and MongoDB. <br>
-🎨 Craft intuitive and aesthetic user interfaces with a focus on UI/UX design. <br>
-📊 Optimize SEO for improved site visibility and user engagement.</p>
+🖥️ Develop full stack features by building responsive frontend interfaces and integrating them with scalable backend APIs.<br>
+⚙️ Build backend services and REST APIs using Python and FastAPI, including system integrations and data processing pipelines.<br>
+🤖 Design and implement AI-driven solutions using LLMs and Retrieval Augmented Generation (RAG), with embeddings and vector search.<br>
+🧩 Integrate frontend applications with backend services, databases, and third-party APIs, ensuring reliability and maintainability.<br>
+📊 Apply engineering best practices such as logging, error handling, observability, and version control in production-oriented projects.<br>
 
 ###
 
