@@ -3,7 +3,7 @@
 ###
 
 <p align="left">
-  👋 Hi, I'm Felippe Ximenes! <br>
+  👋 Hi, I'm Felippe Ximenes <br>
   
 Junior Full Stack Developer with experience in frontend development, backend APIs, and AI-driven systems.<br>
 Strong background in Python, FastAPI, LLMs, RAG, and data pipelines, with hands-on experience integrating frontend interfaces with scalable backend services.<br>
