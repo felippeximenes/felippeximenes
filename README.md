@@ -31,8 +31,8 @@
 
 <br>
 
-**[LiberPay Dashboard](https://github.com/felippeximenes/liberpay-dashboard)** — Weekly sales-funnel dashboard consolidating GA4, Pipedrive and MailPoet data.
-<br><sub>Next.js · Vercel Blob · Make.com</sub>
+**[Moldz3D](https://moldz3d.com.br)** — Full-stack 3D-printing e-commerce with native MercadoPago checkout (Pix, Boleto & card), real-time Melhor Envio shipping, and an admin panel with PostHog analytics.
+<br><sub>React · FastAPI · MongoDB · MercadoPago · Cloudinary · Resend</sub>
 
 <br><br>
 
