@@ -1,0 +1,48 @@
+name: Update profile README card
+
+on:
+  schedule:
+    # a cada 12 horas
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'dark_mode.svg'
+      - 'light_mode.svg'
+
+permissions:
+  contents: write
+
+jobs:
+  update-card:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate SVGs from live GitHub data
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GH_USERNAME: felippeximenes
+        run: python main.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dark_mode.svg light_mode.svg
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: update profile stats card [skip ci]"
+            git push
+          fi
