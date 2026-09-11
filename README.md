@@ -28,7 +28,7 @@
 **[LiberPay Dashboard](https://github.com/felippeximenes/liberpay-dashboard)** — Weekly sales-funnel dashboard consolidating GA4, Pipedrive and MailPoet data.
 <br><sub>Next.js · Vercel Blob · Make.com</sub>
 
-🇧🇷&nbsp;<img src="https://img.shields.io/badge/Portugu%C3%AAs-Nativo-brightgreen" alt="Português: Nativo"/>&nbsp;&nbsp;🇺🇸&nbsp;<img src="https://img.shields.io/badge/English-Fluent-blue" alt="English: Fluent"/>&nbsp;&nbsp;🇪🇸&nbsp;<img src="https://img.shields.io/badge/Espa%C3%B1ol-Avanzado-yellow" alt="Español: Avanzado"/>
+<img src="https://img.shields.io/badge/Portugu%C3%AAs-Nativo-brightgreen" alt="Português: Nativo"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/English-Fluent-blue" alt="English: Fluent"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/Espa%C3%B1ol-Avanzado-yellow" alt="Español: Avanzado"/>
 
 <br><br>
 
