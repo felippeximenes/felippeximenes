@@ -102,15 +102,18 @@ def fetch_social_accounts():
     return r.json()
 
 
-def fetch_avatar_data_uri(avatar_url):
-    """Downloads the GitHub avatar and inlines it as a base64 data URI, so the
-    SVG stays fully self-contained (GitHub sandboxes raw SVGs and blocks them
-    from loading external images at render time)."""
-    r = requests.get(f"{avatar_url}&s=200" if "?" in avatar_url else f"{avatar_url}?s=200", timeout=30)
-    r.raise_for_status()
-    content_type = r.headers.get("Content-Type", "image/png")
-    encoded = base64.b64encode(r.content).decode("ascii")
-    return f"data:{content_type};base64,{encoded}"
+LOGO_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.png")
+LOGO_ASPECT = 205 / 226  # width / height of logo.png, used to size it without re-reading the file
+
+
+def load_logo_data_uri(path=LOGO_PATH):
+    """Inlines the local brand-mark PNG as a base64 data URI, so the SVG stays
+    fully self-contained (GitHub sandboxes raw SVGs and blocks them from
+    loading external images at render time). Swap logo.png in the repo to
+    change the mark; no code change needed."""
+    with open(path, "rb") as f:
+        encoded = base64.b64encode(f.read()).decode("ascii")
+    return f"data:image/png;base64,{encoded}"
 
 
 def aggregate_repos(base):
@@ -162,23 +165,44 @@ def build_svg(mode, d):
     lp_x, lp_y, lp_w, lp_h = 24, 64, 232, H - 88
     svg.append(f'<rect x="{lp_x}" y="{lp_y}" width="{lp_w}" height="{lp_h}" rx="10" fill="{panelbg}" stroke="{border}" stroke-width="1"/>')
     cx, cy = lp_x + lp_w / 2, lp_y + 118
-    clip_id = f"avatarClip-{mode}"
+    shade_id, glow_id, lift_id, ring_id = f"logoShade-{mode}", f"logoGlow-{mode}", f"logoLift-{mode}", f"ring-{mode}"
     svg.append(
-        f'<defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">'
+        f'<defs>'
+        f'<linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">'
         f'<stop offset="0%" stop-color="{accent}"/><stop offset="100%" stop-color="{pink}"/>'
         f'</linearGradient>'
-        f'<clipPath id="{clip_id}"><circle cx="{cx}" cy="{cy}" r="60"/></clipPath>'
+        f'<radialGradient id="{glow_id}" cx="50%" cy="45%" r="60%">'
+        f'<stop offset="0%" stop-color="#ff6a3d" stop-opacity="0.35"/>'
+        f'<stop offset="100%" stop-color="#ff6a3d" stop-opacity="0"/>'
+        f'</radialGradient>'
+        f'<linearGradient id="{ring_id}" x1="0%" y1="0%" x2="100%" y2="100%">'
+        f'<stop offset="0%" stop-color="#ff8a5c"/><stop offset="100%" stop-color="#e8433f"/>'
+        f'</linearGradient>'
+        f'<filter id="{shade_id}"><feColorMatrix type="matrix" values="0 0 0 0 0.32  0 0 0 0 0.07  0 0 0 0 0.03  0 0 0 1 0"/></filter>'
+        f'<filter id="{lift_id}" x="-60%" y="-60%" width="220%" height="220%">'
+        f'<feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#000000" flood-opacity="0.5"/>'
+        f'</filter>'
         f'</defs>'
     )
-    avatar = d.get("avatar_data_uri")
-    if avatar:
-        svg.append(
-            f'<image href="{avatar}" x="{cx-60}" y="{cy-60}" width="120" height="120" '
-            f'preserveAspectRatio="xMidYMid slice" clip-path="url(#{clip_id})"/>'
-        )
+    logo = d.get("logo_data_uri")
+    # bounding box for the mark, aspect-locked to the source PNG
+    lw = 96
+    lh = round(lw / LOGO_ASPECT)
+    svg.append(f'<circle cx="{cx}" cy="{cy}" r="72" fill="url(#{glow_id})"/>')
+    if logo:
+        svg.append(f'<g filter="url(#{lift_id})">')
+        # stacked, darkened copies offset along one diagonal fake an extruded / beveled 3D edge
+        steps = 9
+        for i in range(steps, 0, -1):
+            off = i * 1.3
+            svg.append(
+                f'<image href="{logo}" x="{cx-lw/2+off}" y="{cy-lh/2+off}" width="{lw}" height="{lh}" filter="url(#{shade_id})"/>'
+            )
+        svg.append(f'<image href="{logo}" x="{cx-lw/2}" y="{cy-lh/2}" width="{lw}" height="{lh}"/>')
+        svg.append('</g>')
     else:
         svg.append(f'<text x="{cx}" y="{cy+16}" font-family="{FONT}" font-size="46" font-weight="700" text-anchor="middle" fill="url(#g1)">FX</text>')
-    svg.append(f'<circle cx="{cx}" cy="{cy}" r="66" fill="none" stroke="url(#g1)" stroke-width="3" stroke-dasharray="6 7"/>')
+    svg.append(f'<circle cx="{cx}" cy="{cy}" r="66" fill="none" stroke="url(#{ring_id})" stroke-width="2.5" stroke-dasharray="1 8" stroke-linecap="round"/>')
     svg.append(f'<text x="{cx}" y="{cy+96}" font-family="{FONT}" font-size="14" text-anchor="middle" fill="{text}">Felippe Ximenes</text>')
     svg.append(f'<text x="{cx}" y="{cy+118}" font-family="{FONT}" font-size="12" text-anchor="middle" fill="{dim}">Full Stack Developer</text>')
 
@@ -243,13 +267,13 @@ def main():
     instagram_url = next((s["url"] for s in socials if s["provider"] == "instagram"), "")
 
     try:
-        avatar_data_uri = fetch_avatar_data_uri(profile["avatar_url"])
+        logo_data_uri = load_logo_data_uri()
     except Exception as exc:  # noqa: BLE001 - fall back to the monogram if this fails
-        print(f"Could not fetch avatar, falling back to monogram: {exc}")
-        avatar_data_uri = None
+        print(f"Could not load logo.png, falling back to monogram: {exc}")
+        logo_data_uri = None
 
     data = {
-        "avatar_data_uri": avatar_data_uri,
+        "logo_data_uri": logo_data_uri,
         "role": "Junior Full Stack Developer",
         "company": profile.get("company") or "-",
         "location": profile.get("location") or "-",
