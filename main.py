@@ -141,6 +141,34 @@ def esc(s):
     return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+TIER_COLORS = {"GOLD": "#e3b341", "SILVER": "#adb5bd", "BRONZE": "#cd7f32"}
+
+
+def tier_for(value, bronze, silver, gold):
+    if value >= gold:
+        return "GOLD"
+    if value >= silver:
+        return "SILVER"
+    if value >= bronze:
+        return "BRONZE"
+    return None
+
+
+def compute_achievements(repos, followers, stars, commits, years_active):
+    specs = [
+        ("📦", "Repo Builder", repos, f"{repos} repos", (5, 20, 40)),
+        ("🤝", "Community", followers, f"{followers} followers", (3, 15, 50)),
+        ("⭐", "Star Collector", stars, f"{stars} stars", (1, 10, 50)),
+        ("🔥", "Commit Grinder", commits, f"{commits} commits", (100, 500, 1500)),
+        ("📅", "Veteran", years_active, f"{years_active}+ yrs on GitHub", (1, 2, 3)),
+    ]
+    achievements = []
+    for icon, label, value, caption, (bronze, silver, gold) in specs:
+        tier = tier_for(value, bronze, silver, gold)
+        achievements.append({"icon": icon, "label": label, "caption": caption, "tier": tier})
+    return achievements
+
+
 def build_svg(mode, d):
     dark = mode == "dark"
     bg = "#0d1117" if dark else "#ffffff"
@@ -258,6 +286,47 @@ def build_svg(mode, d):
     return "\n".join(svg)
 
 
+TW, TH = 900, 132
+
+
+def build_trophies_svg(mode, achievements):
+    dark = mode == "dark"
+    bg = "#0d1117" if dark else "#ffffff"
+    panelbg = "#161b22" if dark else "#f6f8fa"
+    border = "#30363d" if dark else "#d0d7de"
+    text = "#c9d1d9" if dark else "#24292f"
+    dim = "#8b949e" if dark else "#57606a"
+    locked = "#484f58" if dark else "#afb8c1"
+
+    svg = [f'<svg width="{TW}" height="{TH}" viewBox="0 0 {TW} {TH}" xmlns="http://www.w3.org/2000/svg">']
+    svg.append(f'<rect width="{TW}" height="{TH}" rx="14" fill="{bg}" stroke="{border}" stroke-width="1.5"/>')
+
+    n = len(achievements)
+    gap = 10
+    margin = 20
+    chip_w = (TW - 2 * margin - (n - 1) * gap) / n
+    chip_h = TH - 32
+    y0 = 16
+
+    for i, a in enumerate(achievements):
+        x0 = margin + i * (chip_w + gap)
+        cx = x0 + chip_w / 2
+        tier = a["tier"]
+        color = TIER_COLORS.get(tier, locked)
+        icon_opacity = "1" if tier else "0.35"
+        svg.append(
+            f'<rect x="{x0}" y="{y0}" width="{chip_w}" height="{chip_h}" rx="10" '
+            f'fill="{panelbg}" stroke="{color}" stroke-width="1.3" stroke-opacity="{"0.9" if tier else "0.5"}"/>'
+        )
+        svg.append(f'<text x="{cx}" y="{y0+34}" font-family="{FONT}" font-size="24" text-anchor="middle" opacity="{icon_opacity}">{a["icon"]}</text>')
+        svg.append(f'<text x="{cx}" y="{y0+56}" font-family="{FONT}" font-size="11" font-weight="700" text-anchor="middle" fill="{text}">{esc(a["label"])}</text>')
+        svg.append(f'<text x="{cx}" y="{y0+74}" font-family="{FONT}" font-size="10" font-weight="700" text-anchor="middle" fill="{color}">{tier or "LOCKED"}</text>')
+        svg.append(f'<text x="{cx}" y="{y0+92}" font-family="{FONT}" font-size="10" text-anchor="middle" fill="{dim}">{esc(a["caption"])}</text>')
+
+    svg.append("</svg>")
+    return "\n".join(svg)
+
+
 def main():
     base = fetch_base()
     profile = fetch_rest_profile()
@@ -270,6 +339,12 @@ def main():
     total_commits = fetch_total_commits(base["createdAt"])
     linkedin_url = next((s["url"] for s in socials if s["provider"] == "linkedin"), "")
     instagram_url = next((s["url"] for s in socials if s["provider"] == "instagram"), "")
+
+    created_year = datetime.fromisoformat(base["createdAt"].replace("Z", "+00:00")).year
+    years_active = max(0, datetime.now(timezone.utc).year - created_year)
+    public_repos = int(profile.get("public_repos", base["repositories"]["totalCount"]))
+    followers_count = int(base["followers"]["totalCount"])
+    achievements = compute_achievements(public_repos, followers_count, total_stars, total_commits, years_active)
 
     try:
         logo_data_uri = load_logo_data_uri()
@@ -299,7 +374,12 @@ def main():
         f.write(build_svg("dark", data))
     with open("light_mode.svg", "w") as f:
         f.write(build_svg("light", data))
+    with open("trophies_dark.svg", "w") as f:
+        f.write(build_trophies_svg("dark", achievements))
+    with open("trophies_light.svg", "w") as f:
+        f.write(build_trophies_svg("light", achievements))
     print("SVGs generated with live data:", data)
+    print("Achievements:", achievements)
 
 
 if __name__ == "__main__":

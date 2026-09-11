@@ -36,9 +36,12 @@
 
 <br><br>
 
-### 🏆 Trophies
+### 🏆 Achievements
 
-<img src="https://github-profile-trophy.vercel.app/?username=felippeximenes&theme=onedark&no-frame=true&no-bg=true&margin-w=12&row=1&column=6" alt="GitHub Trophies"/>
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/felippeximenes/felippeximenes/main/trophies_dark.svg">
+<img alt="GitHub Achievements" src="https://raw.githubusercontent.com/felippeximenes/felippeximenes/main/trophies_light.svg">
+</picture>
 
 <br>
 
