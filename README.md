@@ -1,52 +1,38 @@
-<h2 align="left">About Me</h2>
+<a href="https://github.com/felippeximenes">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/felippeximenes/felippeximenes/main/dark_mode.svg">
+<img alt="Felippe Ximenes' GitHub Profile README" src="https://raw.githubusercontent.com/felippeximenes/felippeximenes/main/light_mode.svg">
+</picture>
+</a>
 
-###
+<br>
 
 <p align="left">
-  👋 Hi, I'm Felippe Ximenes <br>
-  
-Junior Full Stack Developer with experience in frontend development, backend APIs, and AI-driven systems.<br>
-Strong background in Python, FastAPI, LLMs, RAG, and data pipelines, with hands-on experience integrating frontend interfaces with scalable backend services.<br>
-Comfortable working end-to-end, from UI to APIs, databases, and AI integrations, following production-oriented engineering practices.<br>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white" alt="FastAPI"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript"/>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black" alt="React"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white" alt="Node.js"/>
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white" alt="MongoDB"/>
+  <img src="https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white" alt="Jupyter"/>
+</p>
 
-🎯 What I do:
+<p align="left">
+  <a href="https://linkedin.com/in/felippeximenes"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+  <a href="https://instagram.com/felippidios"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white" alt="Instagram"/></a>
+</p>
 
-🖥️ Develop full stack features by building responsive frontend interfaces and integrating them with scalable backend APIs.<br>
-⚙️ Build backend services and REST APIs using Python and FastAPI, including system integrations and data processing pipelines.<br>
-🤖 Design and implement AI-driven solutions using LLMs and Retrieval Augmented Generation (RAG), with embeddings and vector search.<br>
-🧩 Integrate frontend applications with backend services, databases, and third-party APIs, ensuring reliability and maintainability.<br>
-📊 Apply engineering best practices such as logging, error handling, observability, and version control in production-oriented projects.<br>
+<br>
 
-###
+<p align="left">
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=felippeximenes&show_icons=true&theme=github_dark&hide_border=true&count_private=true" alt="GitHub stats"/>
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=felippeximenes&layout=compact&theme=github_dark&hide_border=true" alt="Top languages"/>
+</p>
 
-<h2 align="left">Techs</h2>
+<p align="left">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=felippeximenes&theme=github-dark-blue&hide_border=true" alt="GitHub streak"/>
+</p>
 
-###
-
-<div align="left">
-  <img src="https://skillicons.dev/icons?i=html" height="40" alt="html5 logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=css" height="40" alt="css3 logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=js" height="40" alt="javascript logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=py" height="40" alt="python logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=react" height="40" alt="react logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" height="40" alt="pandas logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" height="40" alt="jupyter logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=mongodb" height="40" alt="mongodb logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=nodejs" height="40" alt="nodejs logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=github" height="40" alt="github logo"  />
-</div>
-
-###
-
-
-
-
+<p align="left">
+  <img src="https://komarev.com/ghpvc/?username=felippeximenes&style=flat&color=blue&label=Profile+views" alt="Profile views"/>
+</p>
