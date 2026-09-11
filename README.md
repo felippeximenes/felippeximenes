@@ -36,6 +36,12 @@
 
 <br><br>
 
+### 🏆 Trophies
+
+<img src="https://github-profile-trophy.vercel.app/?username=felippeximenes&theme=onedark&no-frame=true&no-bg=true&margin-w=12&row=1&column=6" alt="GitHub Trophies"/>
+
+<br>
+
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=felippeximenes&theme=github-dark-blue&hide_border=true" alt="GitHub streak"/>
 
 <br>
