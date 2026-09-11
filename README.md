@@ -1,5 +1,11 @@
 <div align="center">
 
+<a href="https://github.com/felippeximenes/felippeximenes">
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&pause=1000&color=F7A41D&center=true&vCenter=true&width=650&lines=Building+LLM-powered+apps+%26+RAG+pipelines;Full-Stack+Dev+%7C+AI+%26+GenAI+Engineer;Deploying+LLMs+to+production+on+AWS%2FAzure" alt="Typing SVG"/>
+</a>
+
+<br>
+
 <a href="https://github.com/felippeximenes">
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/felippeximenes/felippeximenes/main/dark_mode.svg">
