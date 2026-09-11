@@ -25,11 +25,6 @@
 <br>
 
 <p align="left">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=felippeximenes&show_icons=true&theme=github_dark&hide_border=true&count_private=true" alt="GitHub stats"/>
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=felippeximenes&layout=compact&theme=github_dark&hide_border=true" alt="Top languages"/>
-</p>
-
-<p align="left">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=felippeximenes&theme=github-dark-blue&hide_border=true" alt="GitHub streak"/>
 </p>
 
