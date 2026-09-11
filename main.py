@@ -24,7 +24,7 @@ if not TOKEN:
 HEADERS_GRAPHQL = {"Authorization": f"bearer {TOKEN}"}
 HEADERS_REST = {"Authorization": f"token {TOKEN}", "Accept": "application/vnd.github+json"}
 
-W, H = 900, 580
+W, H = 900, 610
 FONT = "ui-monospace, 'Cascadia Code', 'Fira Code', 'JetBrains Mono', Menlo, Consolas, monospace"
 
 BASE_QUERY = """
@@ -208,7 +208,7 @@ def build_svg(mode, d):
         svg.append(f'<text x="{cx}" y="{cy+16}" font-family="{FONT}" font-size="46" font-weight="700" text-anchor="middle" fill="url(#g1)">FX</text>')
     svg.append(f'<circle cx="{cx}" cy="{cy}" r="66" fill="none" stroke="url(#{ring_id})" stroke-width="2.5" stroke-dasharray="1 8" stroke-linecap="round"/>')
     svg.append(f'<text x="{cx}" y="{cy+96}" font-family="{FONT}" font-size="14" text-anchor="middle" fill="{text}">Felippe Ximenes</text>')
-    svg.append(f'<text x="{cx}" y="{cy+118}" font-family="{FONT}" font-size="12" text-anchor="middle" fill="{dim}">Full Stack Developer</text>')
+    svg.append(f'<text x="{cx}" y="{cy+118}" font-family="{FONT}" font-size="12" text-anchor="middle" fill="{dim}">Full-Stack · AI/LLM Eng.</text>')
 
     prompt_y = lp_y + lp_h - 74
     svg.append(f'<text x="{lp_x+18}" y="{prompt_y}" font-family="{FONT}" font-size="13" fill="{accent2}">$ whoami</text>')
@@ -235,6 +235,7 @@ def build_svg(mode, d):
     svg.append(rline("Role:", d["role"], y)); y += 22
     svg.append(rline("Company:", d["company"], y)); y += 22
     svg.append(rline("Location:", d["location"], y)); y += 22
+    svg.append(rline("Focus:", d["focus"], y)); y += 22
     svg.append(rline("Bio:", d["bio"], y)); y += 34
 
     svg.append(rsection("Top languages", y)); y += 26
@@ -278,9 +279,10 @@ def main():
 
     data = {
         "logo_data_uri": logo_data_uri,
-        "role": "Junior Full Stack Developer",
+        "role": "Full-Stack Dev | AI & LLM (RAG, GenAI)",
         "company": profile.get("company") or "-",
         "location": profile.get("location") or "-",
+        "focus": "RAG pipelines · LLM deploy (AWS/Azure)",
         "bio": (profile.get("bio") or "")[:42] or "-",
         "top_languages": ", ".join(top_languages) or "-",
         "public_repos": str(profile.get("public_repos", base["repositories"]["totalCount"])),
