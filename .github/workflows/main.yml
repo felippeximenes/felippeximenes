@@ -10,6 +10,8 @@ on:
     paths-ignore:
       - 'dark_mode.svg'
       - 'light_mode.svg'
+      - 'trophies_dark.svg'
+      - 'trophies_light.svg'
 
 permissions:
   contents: write
@@ -39,7 +41,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dark_mode.svg light_mode.svg
+          git add dark_mode.svg light_mode.svg trophies_dark.svg trophies_light.svg
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
