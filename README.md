@@ -13,6 +13,23 @@
 
 <br><br>
 
+### 🚀 Featured Projects
+
+**[Certara](https://github.com/felippeximenes/certara-app)** — AI-powered AWS certification quiz platform with AI-generated questions and personalized feedback.
+<br><sub>AWS Lambda · Amazon Bedrock · Qdrant · Cognito · React + TypeScript</sub>
+
+<br>
+
+**[EduTrack](https://github.com/felippeximenes/edu-track)** — Full-stack LMS with role-based access, course & progress tracking, and QR-verified PDF certificates.
+<br><sub>Node.js · Express · Prisma · MySQL · React 19 · JWT</sub>
+
+<br>
+
+**[LiberPay Dashboard](https://github.com/felippeximenes/liberpay-dashboard)** — Weekly sales-funnel dashboard consolidating GA4, Pipedrive and MailPoet data.
+<br><sub>Next.js · Vercel Blob · Make.com</sub>
+
+<br><br>
+
 <a href="https://linkedin.com/in/felippeximenes"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>&nbsp;<a href="https://instagram.com/felippidios"><img src="https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white" alt="Instagram"/></a>
 
 <br><br>
