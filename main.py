@@ -182,6 +182,9 @@ def build_svg(mode, d):
         f'<filter id="{lift_id}" x="-60%" y="-60%" width="220%" height="220%">'
         f'<feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#000000" flood-opacity="0.5"/>'
         f'</filter>'
+        f'<radialGradient id="logoBg-{mode}" cx="50%" cy="42%" r="65%">'
+        f'<stop offset="0%" stop-color="#1c2128"/><stop offset="100%" stop-color="#05070a"/>'
+        f'</radialGradient>'
         f'</defs>'
     )
     logo = d.get("logo_data_uri")
@@ -189,6 +192,7 @@ def build_svg(mode, d):
     lw = 96
     lh = round(lw / LOGO_ASPECT)
     svg.append(f'<circle cx="{cx}" cy="{cy}" r="72" fill="url(#{glow_id})"/>')
+    svg.append(f'<circle cx="{cx}" cy="{cy}" r="60" fill="url(#logoBg-{mode})"/>')
     if logo:
         svg.append(f'<g filter="url(#{lift_id})">')
         # stacked, darkened copies offset along one diagonal fake an extruded / beveled 3D edge
